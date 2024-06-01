@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+@model User
+
+<div class="container-fluid">
+    <div style="margin-top: 25px" class="container">
+        <div class="bg-light bg-corner-rad">
+            <h1>@Model.name</h1>
+            <h2>@Model.email</h2>
+            <div class="info-box">
+                <div class="flavor-chart">
+                    <!-- График начало -------------- -->
+                    <table class="charts-css column show-heading show-labels show-primary-axis show-4-secondary-axes show-data-axes data-spacing-15 hide-data">
+
+                        <caption> (DEBUG) Preferences Pie Chart </caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col"> Flavour </th>
+                                <th scope="col"> Value </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th> pref_bitterness </th>
+                                <td style="--size: calc( @Model.pref_bitterness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.pref_bitterness </td>
+                            </tr>
+                            <tr>
+                                <th> pref_saltiness </th>
+                                <td style="--size: calc( @Model.pref_saltiness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.pref_saltiness </td>
+                            </tr>
+                            <tr>
+                                <th> pref_sourness </th>
+                                <td style="--size: calc( @Model.pref_sourness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.pref_sourness </td>
+                            </tr>
+                            <tr>
+                                <th> pref_spiciness </th>
+                                <td style="--size: calc( @Model.pref_spiciness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.pref_spiciness </td>
+                            </tr>
+                            <tr>
+                                <th> pref_sweentess </th>
+                                <td style="--size: calc( @Model.pref_sweentess.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.pref_sweentess </td>
+                            </tr>
+                            <tr>
+                                <th> pref_strength </th>
+                                <td style="--size: calc( @Model.pref_strength.ToString(System.Globalization.CultureInfo.InvariantCulture) / 90 );"> @Model.pref_strength </td>
+                            </tr>
+                        </tbody>
+                        <!-- График конец -------------- -->
+                    </table>
+                </div>
+            </div>
+            <div class="info-box">
+                <h3>Favourite</h3>
+                <div style="margin-top: 25px" class="container">
+                    <div class="row">
+                        @foreach (var item in @Model.favorite)
+                        {
+                            <div class="col-3">
+                                <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="row g-0">
+                                        <div class="col-md-12">
+                                            <img src="@item.picture_link" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@item.name</h5>
+                                                <p class="card-text">@item.sub_name</p>
+                                                <p class="card-text"><small class="text-body-secondary">@item.year</small></p>
+
+                                                <a class="btn btn-primary" asp-controller="Home" asp-action="Details">Detail</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+@model Cocktail
+<form style="margin-top: 25px" method="get" action="/Home/Search" class="d-flex" role="search">
+    <input name="searchTitle" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+<div class="container-fluid">
+    <div style="margin-top: 25px" class="container">
+        <div class="bg-light bg-corner-rad">
+            <h1>@Model.name</h1>
+            <h2>@Model.sub_name</h2>
+            <img class="details_image" src="@Model.picture_link" alt="...">
+            <div class="info-box">
+                <div class="flavor-chart">
+                    <!-- График начало -------------- -->
+                    <table class="charts-css column show-heading show-labels show-primary-axis show-4-secondary-axes show-data-axes data-spacing-15 hide-data">
+
+                        <caption> Flavour Pie Chart </caption>
+
+                        <thead>
+                            <tr>
+                                <th scope="col"> Flavour </th>
+                                <th scope="col"> Value </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th> bitterness </th>
+                                <td style="--size: calc( @Model.bitterness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.bitterness </td>
+                            </tr>
+                            <tr>
+                                <th> saltiness </th>
+                                <td style="--size: calc( @Model.saltiness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.saltiness </td>
+                            </tr>
+                            <tr>
+                                <th> sourness </th>
+                                <td style="--size: calc( @Model.sourness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.sourness </td>
+                            </tr>
+                            <tr>
+                                <th> spiciness </th>
+                                <td style="--size: calc( @Model.spiciness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.spiciness </td>
+                            </tr>
+                            <tr>
+                                <th> sweetness </th>
+                                <td style="--size: calc( @Model.sweetness.ToString(System.Globalization.CultureInfo.InvariantCulture) / 1 );"> @Model.sweetness </td>
+                            </tr>
+                        </tbody>
+                        <!-- График конец -------------- -->
+                    </table>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Strength: @Model.strength %</p>
+                <p>Year of Creation: @Model.year</p>    
+                <p>Source: @Model.source</p>
+            </div>
+            <div class="info-box">
+                <h3>Ingredients</h3>
+                <ul>
+                    <li>Ingredient 1</li>
+                    <li>Ingredient 2</li>
+                    <!-- Add more ingredients as needed -->
+                </ul>
+            </div>
+            <div class="info-box">
+                <h3>Recipe</h3>
+                <p>@Model.recipe</p>
+            </div>
+            <div class="info-box">
+                <h3>Garnish</h3>
+                <p>@Model.garnish</p>
+            </div>
+            <div class="info-box">
+                <h3>History</h3>
+                <p>@Model.history</p>
+            </div>
+            <div class="info-box">
+                <h3>Rating</h3>
+                <p>Rating: @Model.rating.ToString(System.Globalization.CultureInfo.InvariantCulture) </p>
+            </div>
+        </div>
+    </div>
+</div>
+
